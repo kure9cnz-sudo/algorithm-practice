@@ -1,0 +1,3 @@
+rootProject.name = 'algorithm-journey-idea'
+include 'original'
+include 'practice'
