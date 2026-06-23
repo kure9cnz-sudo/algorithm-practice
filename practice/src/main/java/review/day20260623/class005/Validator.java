@@ -16,15 +16,49 @@ public class Validator {
     }
 
     public static void selectionSort(int[] arr) {
-        throw new UnsupportedOperationException("TODO: implement selectionSort");
+        if (arr == null || arr.length < 2) {
+            return;
+        }
+        int curMinIndex = 0;
+        for (int i = 0; i < arr.length; i++) {
+            curMinIndex = i;
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[j] < arr[curMinIndex]) {
+                    curMinIndex = j;
+                }
+            }
+            swap(arr, i, curMinIndex);
+        }
     }
 
     public static void bubbleSort(int[] arr) {
-        throw new UnsupportedOperationException("TODO: implement bubbleSort");
+        if (arr == null || arr.length < 2) {
+            return;
+        }
+        for (int i = arr.length - 1; i > 0; i--) {
+            for (int j = 0; j < i; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    swap(arr, j, j + 1);
+                }
+            }
+        }
     }
 
     public static void insertionSort(int[] arr) {
-        throw new UnsupportedOperationException("TODO: implement insertionSort");
+        if (arr == null || arr.length < 2) {
+            return;
+        }
+        for (int i = 1; i < arr.length; i++) {
+            for (int j = i; j > 0 && arr[j] < arr[j - 1] ; j--) {
+                swap(arr, j, j - 1);
+            }
+        }
+    }
+
+    public static void swap(int[] arr, int i, int j) {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
     }
 
     private static void checkSort(String name, IntArraySorter sorter) {

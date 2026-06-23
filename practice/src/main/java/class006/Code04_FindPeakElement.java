@@ -14,9 +14,31 @@ public class Code04_FindPeakElement {
 	class Solution {
 
 		public static int findPeakElement(int[] arr) {
-			throw new UnsupportedOperationException("TODO: implement findPeakElement in practice module");
-		}
-
+            int n = arr.length;
+            if (n == 1) {
+                return 0;
+            }
+            if (arr[0] > arr[1]) {
+                return 0;
+            }
+            if (arr[n - 2] < arr[n - 1]) {
+                return n - 1;
+            }
+            int l = 1;
+            int r = n - 2;
+            int m = 0;
+            while (l <= r) {
+                m = l + (r - l) / 2;
+                if (arr[m - 1] > arr[m]) {
+                    r = m - 1;
+                } else if (arr[m + 1] > arr[m]) {
+                    l = m + 1;
+                } else {
+                    return m;
+                }
+            }
+            return -1;
+        }
 	}
 
 }

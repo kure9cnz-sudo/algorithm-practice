@@ -48,7 +48,22 @@ public class Code03_FindRight {
 	// 保证arr有序，才能用这个方法
 	// 有序数组中找<=num的最右位置
 	public static int findRight(int[] arr, int num) {
-		throw new UnsupportedOperationException("TODO: implement findRight in practice module");
+		if (arr == null || arr.length == 0) {
+            return -1;
+        }
+        int ans = -1;
+        int l = 0;
+        int r = arr.length - 1;
+        while (l <= r) {
+            int m = l + (r - l) / 2;
+            if (arr[m] <= num) {
+                ans = m;
+                l = m + 1;
+            } else {
+                r = m - 1;
+            }
+        }
+        return ans;
 	}
 
 }

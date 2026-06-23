@@ -48,7 +48,23 @@ public class Code02_FindLeft {
 	// 保证arr有序，才能用这个方法
 	// 有序数组中找>=num的最左位置
 	public static int findLeft(int[] arr, int num) {
-		throw new UnsupportedOperationException("TODO: implement findLeft in practice module");
+        if (arr == null || arr.length == 0) {
+            return -1;
+        }
+        int l = 0;
+        int r = arr.length - 1;
+        int m = 0;
+        int ans = -1;
+        while (l <= r) {
+            m = l + (r - l) / 2;
+            if (arr[m] >= num) {
+                ans = m;
+                r = m - 1;
+            } else {
+                l = m + 1;
+            }
+        }
+        return ans;
 	}
 
 }
